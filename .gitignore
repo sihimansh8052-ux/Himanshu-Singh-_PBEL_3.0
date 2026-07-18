@@ -1,0 +1,53 @@
+# Node.js & React
+node_modules/
+**/node_modules/
+build/
+**/build/
+dist/
+**/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python & Django
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+*.sqlite3
+*.sqlite3-journal
+db.sqlite3
+**/db.sqlite3
+staticfiles/
+**/staticfiles/
+media/
+**/media/
+*.log
+
+# Jupyter Notebook & ML Caches
+.ipynb_checkpoints
+**/.ipynb_checkpoints/
+*.zip
+*.tar.gz
+
+# IDEs & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
