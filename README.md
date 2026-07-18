@@ -1,71 +1,108 @@
-# Fake News Detector
+# 🛡️ Veri-News AI | Multi-Signal Fake News Detection Platform
 
-Welcome to the Fake News Detector project! This project was created as part of my college coursework, and I'm excited to share it with the developer community. If you are interested in contributing to this project or using it as a basis for your own development, please read on.
+An advanced, full-stack artificial intelligence application designed to combat digital misinformation, clickbait, and unverified rumors in real time. Powered by an **Ensemble AI Detection Engine** (Scikit-Learn Machine Learning + NLP Linguistic Heuristics + Credibility Verification) paired with a **Modern Glassmorphism React Frontend** and **Django REST Framework API**.
 
-## About FND
+---
 
-FND is a web-based application designed to detect fake news articles. It uses machine learning models to analyze news articles and predict whether they are real or fake. The goal of this project is to provide a tool that can help users identify unreliable news sources and combat the spread of misinformation.
+## 🌟 Key Features
 
-## Features
+* ⚡ **Instant AI News Checker (`/checkbytitle`):** Paste any news headline, full article text, or live webpage URL for instant direct verification. Displays prominent 🟢 **REAL NEWS** or 🔴 **FAKE NEWS** badges with authenticity percentage scores and plain-English AI explanations.
+* 📰 **Live News Feed & Category Explorer (`/` & `/category`):** Real-time monitoring feed categorizing live articles across Technology, Politics, Science, World News, and Business with automated verification metrics.
+* 🏆 **Gamified News Quiz (`/newsquiz`):** Test and improve your critical thinking skills by identifying real vs fake news headlines in an interactive quiz with streak tracking and high scores.
+* 📊 **Analytics & Transparency Studio (`/analytics`):** Comprehensive breakdown of AI confidence metrics, sensationalism index scores (0–100), and detected red-flag clickbait phrases.
 
-- **Live News Monitoring:** View real-time predictions for news articles.
-![live_monitoring](https://imgur.com/9BVijIo.png)
+---
 
-- **News Quiz:** Test your fake news detection skills by taking our news quiz.
-![news_quiz](https://imgur.com/w0xmk5f.png)
+## 🧠 AI & Detection Architecture
 
-- **Check News by Title:** Enter a news title to see if it's predicted as real or fake.
-![check_title](https://imgur.com/YDrfDVT.png)
+The platform uses a **Multi-Signal Ensemble Fusion Model** to evaluate news content across three distinct layers:
 
-- **User Collaboration:** I encourage other developers to collaborate and improve this project further.
+```mermaid
+graph TD
+    A[Input: Headline / Article / URL] --> B[AI Feature Extractor]
+    B --> C[1. TF-IDF + Naive Bayes Classifier]
+    B --> D[2. Clickbait & Sensationalism Heuristic Filter]
+    B --> E[3. Official Credibility & Source Verification]
+    C --> F[Multi-Signal Ensemble Fusion Engine]
+    D --> F
+    E --> F
+    F --> G[Final Verdict: REAL or FAKE + Rationale]
+```
 
-## Getting Started
+1. **Machine Learning Model:** TF-IDF (Term Frequency-Inverse Document Frequency) vectorization paired with a Naive Bayes Classifier trained on news datasets.
+2. **Linguistic Sensationalism Analysis:** Scans for high emotional intensity, excessive ALL-CAPS words, exclamation mark density, and red-flag clickbait keywords (e.g., *"SHOCKING SECRET"*, *"MIRACLE CURE"*, *"DOCTORS HATE"*, *"BANNED TRUTH"*).
+3. **Credibility & Journalistic Sourcing:** Detects official press statements, scientific body attributions (e.g., NASA, WHO, Reuters, BBC, academic publications) to verify authentic reporting.
 
-To get started with this project, follow these steps:
+---
 
-1. Cloning the repository
+## 💻 Tech Stack
 
-`git clone https://github.com/DJDarkCyber/Fake-News-Detector`
+* **Frontend:** React.js, React-Bootstrap, React-Router-DOM, React-Toastify, Vanilla CSS (Glassmorphism UI Theme)
+* **Backend:** Python 3, Django 4, Django REST Framework, BeautifulSoup4, Requests
+* **Machine Learning / Data:** Scikit-Learn, NLTK, TF-IDF Vectorizer, Naive Bayes Classifier, Pandas, NumPy
 
-2. Install the required libraries for python
+---
 
-`cd Fake-News-Detector/app/FakeNewsDetectorAPI/ && pip install -r requirements.txt`
+## 🚀 Quick Start & Installation
 
-3. Install the required libraries for js
+### Prerequisites
+* **Python 3.9+**
+* **Node.js 16+** & **npm**
 
-`cd ../fake-news-detector-frontend && npm install`
+---
 
-4. Deployment
+### 1. Backend Setup (Django API)
 
-Open terminal and cd to project root folder and run
+```bash
+# Navigate to backend directory
+cd app/FakeNewsDetectorAPI
 
-`cd app/FakeNewsDetectorAPI/ && python manage.py migrate && python manage.py runserver`
+# Install Python dependencies
+pip install -r requirements.txt
 
-To load quiz data,
+# Run database migrations
+python manage.py migrate
 
-`python manage.py quiz_data_loader game_data/game_data.csv`
+# Load initial quiz dataset
+python manage.py quiz_data_loader game_data/game_data.csv
 
-Open another terminal and cd to project root folder and run
+# Start Django development server
+python manage.py runserver
+```
+> The Django backend will run at **`http://127.0.0.1:8000/`**
 
-`cd app/fake-news-detector-frontend/ && npm start`
+---
 
-All set if everything running without errors. Now the deployed web application should open in a browser. If not, open a browser and navigate to http://localhost:3000
+### 2. Frontend Setup (React App)
 
-## Contributing
+Open a new terminal window:
 
-I welcome contributions from fellow developers. If you have ideas for new features, improvements, or bug fixes, please open an issue or submit a pull request. Your contributions will be greatly appreciated and will help make this project even better.
+```bash
+# Navigate to frontend directory
+cd app/fake-news-detector-frontend
 
-## Roadmap
+# Install Node.js packages
+npm install
 
-- **Enhanced Machine Learning Models:** Improve the accuracy of the fake news detection models.
-- **User Profiles:** Allow users to create profiles and track their quiz scores.
+# Start React development server
+npm start
+```
+> The React Web Application will automatically launch at **`http://localhost:3000/`**
 
-## Contact
+---
 
-If you have any questions or suggestions, feel free to reach out to me at [dark_agent_437@protonmail.com](dark_agent_437@protonmail.com).
+## 📡 REST API Documentation
 
-If you have any issues, raise [issue](https://github.com/DJDarkCyber/Fake-News-Detector/issues).
+| Endpoint | Method | Description |
+| :--- | :--- | :--- |
+| `/api/usercheck/title/` | `POST` | Analyzes text headline or body and returns REAL/FAKE prediction & scores. |
+| `/api/usercheck/title/url/` | `POST` | Scrapes web article URL and runs multi-signal verification. |
+| `/api/live/` | `GET` | Returns live news stream with AI verification tags. |
+| `/api/category/<category_name>/` | `GET` | Returns news articles filtered by category. |
+| `/api/newsquiz/` | `GET` | Returns interactive news quiz questions. |
 
-Thank you for considering contributing to the Fake News Detector project. Together, we can make a positive impact on the fight against misinformation.
+---
 
-Happy coding!
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
